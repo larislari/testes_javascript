@@ -1,0 +1,61 @@
+<meta charset="UTF-8">
+
+<h1>Média de idades</h1>
+
+<script>
+    /* parseInt: formatar e entregar valor inteiro
+    Match.round: arredondar para o número mais próximo (0.5 de sensividade)
+    parseFloat: converter uma string/número mantendo numeros decimais 
+    Number: converte qualquer valor em número 
+    NaN: Not a Number */
+
+    var ano
+    ano = 1996
+
+    var ano2
+    ano2 = 2002
+
+    var ano3
+    ano3 = 1987
+
+    var primeiraIdade
+    primeiraIdade = 18
+    console.log ('Primeira idade' , primeiraIdade)
+
+    var segundaIdade
+    segundaIdade = 24
+    console.log ('Segunda idade' , segundaIdade)
+
+    var terceiraIdade
+    terceiraIdade = 33
+    console.log ('Terceira idade' , terceiraIdade)
+
+    var somaDeIdades
+    somaDeIdades = primeiraIdade + segundaIdade + terceiraIdade 
+
+    var media
+    media = primeiraIdade + segundaIdade + terceiraIdade / 3 
+
+
+    document.write ("Eu nasci em: " + (ano) + "<br>");
+    document.write ("Daniel nasceu em: " + (ano2) + "<br>");
+    document.write ("Carla nasceu em: " + (ano3) + "<br>");
+
+    document.write ("<br>");
+    document.write ("<br>");
+    
+    document.write ("Eu tenho: " + (segundaIdade)+ " anos" + "<br>");
+    document.write ("Daniel tem: " + (primeiraIdade) + " anos" + "<br>");
+    document.write ("Carla tem: " + (terceiraIdade) + " anos" + "<br>");
+
+    document.write ("<br>");
+    document.write ("<br>");
+
+    document.write ("Nós já vivemos ");
+    document.write (somaDeIdades);
+    document.write (" anos no total");
+    document.write ("<br>");
+    document.write ( "A média de idades é: ");
+    document.write (parseInt (media) + " anos");
+
+</script>

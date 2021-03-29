@@ -1,0 +1,113 @@
+<meta charset="utf-8">
+
+<h1>Cadastramento Academia Caelum</h1>
+
+<br><br>
+
+<script src="libIdade.js"></script>
+<script src="libBrasil.js"></script>
+<script src="mostra.js"></script>
+
+Nome 
+<br>
+<input type="text" id="campoNome">
+<br><br>
+
+Peso<br>
+<input type="text" id="campoPeso">
+<br><br>
+
+Altura<br>
+<input type="text" id="campoAltura">
+<br><br>
+
+Data de nascimento
+<br>
+<input type="text" id="campoDataNascimento">
+<br><br>
+
+<button onclick="criaFicha()">Enviar</button>
+
+<input type="checkbox" id="campoProblemasCardiacos"> Tem problemas cardíacos?<br><br>
+
+<script>
+
+    var numeroFicha = 0
+
+    function criaFicha () {
+
+        numeroFicha = numeroFicha +1
+        if (numeroFicha == 1) {
+            mostra ("<h2>Fichas</h2>")
+        }
+        
+        var nome = campoNome.value;
+        var peso = campoPeso.value;
+        var altura = campoAltura.value;
+        var dataNascimento = campoDataNascimento.value;
+        var temProblemasCardiacos = campoProblemasCardiacos.checked
+
+
+        var diaMesAnoNascimento = dataNascimento.split ("/");
+
+        var diaNascimento = diaMesAnoNascimento [0];
+        var mesNascimento = diaMesAnoNascimento [1];
+        var anoNascimento = diaMesAnoNascimento [2];
+
+        var idade = calculaIdade (diaNascimento, mesNascimento, anoNascimento);
+
+        var fraseAcompanhamentoMedico
+
+        var menorDe16 = idade < 16 
+
+        if (temProblemasCardiacos || menorDe16) {
+        fraseAcompanhamentoMedico = "Necessita de acompanhamento médico"
+        }
+        if (!temProblemasCardiacos && !menorDe16){
+        fraseAcompanhamentoMedico = "Não necessita de acompanhamento médico"
+        }
+
+    mostra (`<hr><strong>
+        Ficha ${numeroFicha}
+        <hr></strong>
+        Nome: ${nome}
+        <br>
+        Peso: ${peso} kg
+        <br>
+        Altura: ${altura} m
+        <br>
+        Idade: ${idade} anos
+        <br>
+        ${fraseAcompanhamentoMedico}
+    `)
+    }
+
+
+/*var nome = prompt ("Qual o seu nome? ");
+//var peso = pegaNumero ("Qual o peso? ");
+//var altura = pegaNumero ("Qual sua altura? ");
+
+var dataNascimento = campoDataNascimento.value
+var diaMesAnoNascimento = dataNascimento.split ("/")
+var diaNascimento = diaMesAnoNascimento [0]
+var mesNascimento = diaMesAnoNascimento [1]
+var anoNascimento = diaMesAnoNascimento [2]
+var idade = calculaIdade (diaNascimento, mesNascimento, anoNascimento);
+
+mostra (`O usuário tem ${idade} anos `)
+
+document.write (`
+
+    Nome: ${nome.value}
+    <br>
+    Peso: ${peso.value} kg 
+    <br>
+    Altura: ${altura.value} m
+    <br> 
+    Data de nascimento: ${dataNascimento} 
+    <br>
+    Idade: ${idade} anos
+    `);*/
+
+
+</script>

@@ -1,0 +1,72 @@
+<meta charset="UTF-8">
+<h1>Uber vs Carro</h1>
+
+<script src ="pegaNumero.js"></script>
+
+<script src ="libRelogio.js"></script>
+
+<script src ="formataMoeda.js"></script>
+
+<script>
+    /* var totalGasolina
+    totalGasolina = parseFloat (prompt ("Digite o quanto gastará de gasolina"));
+    var totalEstacionamento
+    totalEstacionamento = parseFloat (prompt ("Digite o quanto gastará de estacionamento"));
+    var totalCarro
+    totalCarro = totalGasolina + totalEstacionamento
+
+    document.write ("Gasolina: R$ " + totalGasolina.toFixed(2).replace (".", ","));
+    document.write ("<br>");
+    document.write ("Estacionamento R$ " + totalEstacionamento.toFixed(2).replace (".", ","));
+    document.write ("<br>");
+    document.write ("Total: R$ " + totalCarro.toFixed(2).replace(".",",")); */
+
+    // var totalGasolina = parseFloat (prompt ("Digite o quanto gastará de gasolina").replace(".",","));
+    
+    // dados do carro
+    // mensagem = "Digite o quanto gastará de estacionamento";
+    var totalEstacionamento = pegaNumero ("Digite o quanto gastará de estacionamento");
+    // var totalEstacionamento = parseFloat (prompt ("Digite o quanto gastará de estacionamento").replace(".",","));
+
+    // mensagem = "Qual a distância que será percorrida?"
+    var distancia = pegaNumero("Qual a distância que será percorrida?");
+    // var distancia = parseFloat (prompt( "Qual a distância que será percorrida?").replace(".",",")); 
+    
+    // mensagem =  "Quantos KM seu carro faz por litro?"
+    var autonomia = pegaNumero("Quantos KM seu carro faz por litro?");    
+    //var autonomia = parseFloat (prompt("Quantos KM seu carro faz por litro?").replace(".",","));
+    
+    //mensagem = "Qual o preço do litro da gasolina?"
+    var precoLitroGasolina = pegaNumero("Qual o preço do litro da gasolina?");
+    //var precoLitroGasolina = parseFloat (prompt("Qual o preço do litro da gasolina?").replace(".",","));
+
+    var totalGasolina = (distancia / autonomia) * precoLitroGasolina;
+    var totalCarro = totalGasolina + totalEstacionamento
+
+    //var velocidadeMedia = pegaNumero ("Qual a velocidade média do Uber?");
+    //var tempoEmHoras = distancia / velocidadeMedia
+    //var tempoEmMinutos = tempoEmHoras * 60 
+    
+    // mensagem =  "Duração da corrida: "  
+    var tempoEmMinutos = pegaNumero ("Duração da corrida: "  );
+    //var tempoEmMinutos = parseFloat (prompt ("Duração da corrida: ").replace(".",","));
+
+    var totalUber = 2 + distancia * 1.4 + tempoEmMinutos * 0.26
+    //var tempoFormatado = libRelogio (tempoEmMinutos)
+
+    document.write (`
+    <h2> Uber </h2>
+    
+    Tempo: ${tempoEmMinutos}
+    <br>
+    Total: ${formataMoeda (totalUber)}
+    
+    <h2> Carro </h2>
+
+    Gasolina: R$ ${formataMoeda (totalGasolina)} 
+    <br> 
+    Estacionamento ${formataMoeda(totalEstacionamento)} 
+    <br>
+    Total: R$ ${formataMoeda(totalCarro)}`);
+
+</script> 

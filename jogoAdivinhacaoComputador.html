@@ -1,0 +1,75 @@
+<meta charset="utf-8">
+
+<h1>Jogo de adivinhar</h1>
+<h2>Jogue esse jogo diretamente com o seu computador</h2>
+
+<br>
+<br>
+
+Digite uma quantidade de números a serem sorteados
+<input type="text" id="quantidadeDeNumeros" />
+
+<button onclick="jogar()">Jogar</button>
+
+<script src="pegaNumero.js"></script>
+<script src="mostra.js"></script>
+<script>
+    function geraNumeroAleatorio() {
+        return parseInt(Math.random() * 10);
+    }
+
+    var jogoAtual = 0;
+    function jogar() {
+        jogoAtual = jogoAtual + 1;
+        var numeroAleatorio = [];
+
+        var contador = 0;
+        while (contador < quantidadeDeNumeros.value) {
+            contador = contador + 1;
+            var numeroSorteado = geraNumeroAleatorio();
+            numeroAleatorio.push(numeroSorteado);
+            console.log(numeroSorteado);
+        }
+
+        var numeroJogador = pegaNumero("Tente adivinhar um numero");
+
+        // ternario
+        // var mensagem = (numeroAleatorio == numeroJogador) ? 'Acertou' : 'Errow'
+        // verificacao ? valor_se_for_verdadeiro : valor_se_for_falso
+        // mostra(mensagem)
+
+        // if(numeroJogador < 0 || numeroJogador > 10) {
+        //     numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+
+        //     if(numeroJogador < 0 || numeroJogador > 10) {
+        //         numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+        //     }
+        // }
+
+        var tentativas = 0;
+        while ((numeroJogador < 0 || numeroJogador > 10)) {
+            if (tentativas === 3) {
+                mostra('Fim de jogo, ja execedeu o numero maximo de tentativas')
+                break
+            }
+
+            tentativas = tentativas + 1;
+            
+            numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+        }
+
+        // do {
+        //     numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+        // } while(numeroJogador < 0 || numeroJogador > 10)
+
+        if (numeroAleatorio.includes(numeroJogador)) {
+            mostra(
+                `Jogo ${jogoAtual}: Acertou! Os numeros eram ${numeroAleatorio}`
+            )
+        } else {
+            mostra(
+                `Jogo ${jogoAtual}: Errou! Os numeros eram ${numeroAleatorio}`
+            )
+        }
+    }
+</script>
